@@ -8,27 +8,27 @@
 
 ### Task 1: GPU与模型
 Files: src/defectbench/transfer.py; tests/test_transfer.py; requirements.txt。
-- [ ] 创建独立GPU虚拟环境，确认CUDA算子与RTX5060真实可用。
-- [ ] 先加入模型形状/梯度测试，验证新增模块缺失时失败。
+- [x] 创建独立GPU虚拟环境，确认CUDA算子与RTX5060真实可用。
+- [x] 先加入模型形状/梯度测试，验证新增模块缺失时失败。
 ```python
 model = ResNetUNet(pretrained=False)
 assert model(torch.rand(2, 1, 64, 96)).shape == (2, 1, 64, 96)
 ```
-- [ ] 实现预训练编码器与跳跃连接解码器；归一化与权重来源写入元数据。
+- [x] 实现预训练编码器与跳跃连接解码器；归一化与权重来源写入元数据。
 
 ### Task 2: 实验训练
 Files: src/defectbench/experiment.py; tests/test_experiment.py。
-- [ ] 先测试成对翻转保持image/mask几何一致、验证不增强、训练不读test。
-- [ ] 实现train与evaluate命令；保存配置、历史、验证选择、checkpoint与固定名单。
+- [x] 先测试成对翻转保持image/mask几何一致、验证不增强、训练不读test。
+- [x] 实现train与evaluate命令；保存配置、历史、验证选择、checkpoint与固定名单。
 ```text
 python -m defectbench.experiment train --data DATA --out results/transfer_seed42 --device cuda
 python -m defectbench.experiment evaluate --data DATA --checkpoint CHECKPOINT --out results/mtd_v3
 ```
-- [ ] 在验证集运行候选配置并选择；只对最终选中配置运行留出评估。
+- [x] 在验证集运行候选配置并选择；只对最终选中配置运行留出评估。
 
 ### Task 3: 预测与报告
 Files: src/defectbench/predict.py; src/defectbench/html_report.py; tests/test_predict.py。
-- [ ] 先测Unicode文件输入、原尺寸输出、同路径拒绝、可加载权重元数据。
-- [ ] 实现文件/文件夹预测，生成掩码/叠加图/JSON；HTML报告展示真实数值与限制。
-- [ ] 实际预测一张本地图片；审阅报告；跑完整测试。
-- [ ] 更新README、来源、学习说明、结果比较，独立审查后提交并推送。
+- [x] 先测Unicode文件输入、原尺寸输出、同路径拒绝、可加载权重元数据。
+- [x] 实现文件/文件夹预测，生成掩码/叠加图/JSON；HTML报告展示真实数值与限制。
+- [x] 实际预测一张本地图片；审阅报告；跑完整测试。
+- [x] 更新README、来源、学习说明、结果比较，独立审查后提交并推送。
