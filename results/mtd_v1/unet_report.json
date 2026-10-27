@@ -1,0 +1,67 @@
+{
+  "count": 202,
+  "positive_masks": 59,
+  "pixel_micro_iou": 0.13592452036013775,
+  "pixel_micro_dice": 0.2393196342254215,
+  "pixel_tp": 179548,
+  "pixel_fp": 697799,
+  "pixel_fn": 443592,
+  "image_precision": 0.4153846153846154,
+  "image_recall": 0.4576271186440678,
+  "image_f1": 0.435483870967742,
+  "image_auroc": 0.6466753585397653,
+  "per_category": {
+    "MT_Blowhole": {
+      "count": 17,
+      "positive_masks": 17,
+      "pixel_micro_iou": 0.010701652263466619,
+      "pixel_micro_dice": 0.021176679071415915,
+      "image_f1": 0.45454545454545453
+    },
+    "MT_Break": {
+      "count": 13,
+      "positive_masks": 13,
+      "pixel_micro_iou": 0.08759340577859433,
+      "pixel_micro_dice": 0.1610774859670785,
+      "image_f1": 0.631578947368421
+    },
+    "MT_Crack": {
+      "count": 9,
+      "positive_masks": 9,
+      "pixel_micro_iou": 0.008003157410046704,
+      "pixel_micro_dice": 0.01587923083616114,
+      "image_f1": 0.5
+    },
+    "MT_Fray": {
+      "count": 5,
+      "positive_masks": 5,
+      "pixel_micro_iou": 0.27067220115268614,
+      "pixel_micro_dice": 0.42602994054193793,
+      "image_f1": 1.0
+    },
+    "MT_Free": {
+      "count": 143,
+      "positive_masks": 0,
+      "pixel_micro_iou": 0.0,
+      "pixel_micro_dice": 0.0,
+      "image_f1": 0.0
+    },
+    "MT_Uneven": {
+      "count": 15,
+      "positive_masks": 15,
+      "pixel_micro_iou": 0.27284752284752284,
+      "pixel_micro_dice": 0.4287198866320264,
+      "image_f1": 0.6956521739130436
+    }
+  },
+  "method": "Lightweight U-Net with weighted BCE plus soft Dice",
+  "selection": "best epoch and mask threshold by validation Dice; image threshold by validation F1",
+  "image_size": 128,
+  "epochs_run": 12,
+  "best_epoch": 12,
+  "batch_size": 16,
+  "mask_threshold": 0.3,
+  "image_score": "mean probability of top 1% pixels",
+  "image_threshold": 0.3557106852531433,
+  "median_inference_ms": 2.97599999976228
+}

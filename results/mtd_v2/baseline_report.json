@@ -1,0 +1,67 @@
+{
+  "count": 202,
+  "positive_masks": 59,
+  "pixel_micro_iou": 0.04152669733149509,
+  "pixel_micro_dice": 0.07974197385029307,
+  "pixel_tp": 339790,
+  "pixel_fp": 7559307,
+  "pixel_fn": 283350,
+  "image_precision": 0.3010204081632653,
+  "image_recall": 1.0,
+  "image_f1": 0.4627450980392157,
+  "image_auroc": 0.5127414957923433,
+  "per_category": {
+    "MT_Blowhole": {
+      "count": 17,
+      "positive_masks": 17,
+      "pixel_micro_iou": 0.0031218948894916345,
+      "pixel_micro_dice": 0.006224357987591442,
+      "image_f1": 1.0
+    },
+    "MT_Break": {
+      "count": 13,
+      "positive_masks": 13,
+      "pixel_micro_iou": 0.07613984694861846,
+      "pixel_micro_dice": 0.14150548771985738,
+      "image_f1": 1.0
+    },
+    "MT_Crack": {
+      "count": 9,
+      "positive_masks": 9,
+      "pixel_micro_iou": 0.003782373388734942,
+      "pixel_micro_dice": 0.0075362418966688546,
+      "image_f1": 1.0
+    },
+    "MT_Fray": {
+      "count": 5,
+      "positive_masks": 5,
+      "pixel_micro_iou": 0.3335311188267606,
+      "pixel_micro_dice": 0.5002224756782594,
+      "image_f1": 1.0
+    },
+    "MT_Free": {
+      "count": 143,
+      "positive_masks": 0,
+      "pixel_micro_iou": 0.0,
+      "pixel_micro_dice": 0.0,
+      "image_f1": 0.0
+    },
+    "MT_Uneven": {
+      "count": 15,
+      "positive_masks": 15,
+      "pixel_micro_iou": 0.20628485408327346,
+      "pixel_micro_dice": 0.342016818639477,
+      "image_f1": 1.0
+    }
+  },
+  "method": "OpenCV Otsu and morphology",
+  "selection": "polarity/kernel/min_area by validation pixel Dice; image threshold by validation F1",
+  "parameters": {
+    "polarity": "dark",
+    "kernel": 5,
+    "min_area": 30
+  },
+  "image_score": "predicted foreground area fraction",
+  "image_threshold": 0.13321739130434782,
+  "median_inference_ms": 0.8095499997580191
+}
