@@ -43,11 +43,15 @@ def discover_pairs(root: Path) -> list[Sample]:
         samples.append(Sample(image.parent.parent.name, image, mask))
     if not samples:
         raise ValueError(f"No image/mask pairs found under {root}")
+    if len({sample.key for sample in samples}) != len(samples):
+        raise ValueError("Duplicate sample keys: keep only one copy of the source dataset")
     return samples
 
 
 def split_samples(samples: list[Sample], seed: int = 42) -> dict[str, list[Sample]]:
     """Split each category 70/15/15 after sorting, then seeded shuffling."""
+    if len({sample.key for sample in samples}) != len(samples):
+        raise ValueError("Duplicate sample keys cannot be split without leakage")
     groups: dict[str, list[Sample]] = {}
     for sample in samples:
         groups.setdefault(sample.category, []).append(sample)

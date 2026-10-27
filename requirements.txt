@@ -1,4 +1,5 @@
 numpy>=1.26
 opencv-python>=4.8
-torch>=2.0
+torch>=2.7
+torchvision>=0.22
 pytest>=8

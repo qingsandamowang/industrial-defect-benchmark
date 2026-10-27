@@ -19,3 +19,6 @@ runtime/
 *.ply
 results/**/*.png
 results/**/*.jpg
+results/**/*.npy
+results/**/predictions.json
+results/**/index.html

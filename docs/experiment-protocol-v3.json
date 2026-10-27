@@ -1,0 +1,16 @@
+{
+  "recorded_before_training": "2026-10-27",
+  "architecture": "resnet18_unet",
+  "encoder_initialization": "torchvision ResNet18 IMAGENET1K_V1",
+  "input_size": 384,
+  "maximum_epochs": 40,
+  "batch_size": 8,
+  "early_stopping_patience": 12,
+  "learning_rate_decoder": 0.001,
+  "learning_rate_encoder": 0.0002,
+  "training_seeds": [42, 43],
+  "split_seed": 42,
+  "selection": "Select the candidate and checkpoint by maximum validation native-resolution pixel micro Dice. Select all thresholds on validation only. Do not select by test scores.",
+  "evaluation": "Run final evaluation only after candidate selection is frozen. Keep the old fixed split and disclose prior historical test visibility.",
+  "provenance": "Hash all compressed source image/mask bytes solely for content registration; decode only train/validation pixels in the train command."
+}
