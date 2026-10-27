@@ -1,0 +1,8 @@
+{
+  "best_epoch": 32,
+  "validation_dice": 0.8472062351514024,
+  "checkpoint_sha256": "b0952c62b6f5fc30609855becbb22c986f9ff9074f5665ed66a555b24b3867aa",
+  "epochs_run": 40,
+  "selection": "maximum validation pixel micro Dice, thresholds selected only on validation",
+  "test_evaluated": false
+}

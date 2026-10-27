@@ -1,0 +1,57 @@
+{
+  "count": 202,
+  "positive_masks": 58,
+  "pixel_micro_iou": 0.7349156987006001,
+  "pixel_micro_dice": 0.8472062351514024,
+  "pixel_tp": 437194,
+  "pixel_fp": 101115,
+  "pixel_fn": 56581,
+  "image_precision": 0.9137931034482759,
+  "image_recall": 0.9137931034482759,
+  "image_f1": 0.9137931034482759,
+  "image_auroc": 0.9555795019157088,
+  "per_category": {
+    "MT_Blowhole": {
+      "count": 17,
+      "positive_masks": 17,
+      "pixel_micro_iou": 0.7299382716049383,
+      "pixel_micro_dice": 0.8438893844781445,
+      "image_f1": 0.9375
+    },
+    "MT_Break": {
+      "count": 13,
+      "positive_masks": 13,
+      "pixel_micro_iou": 0.8311696942844484,
+      "pixel_micro_dice": 0.9078019332438089,
+      "image_f1": 0.9600000000000001
+    },
+    "MT_Crack": {
+      "count": 9,
+      "positive_masks": 9,
+      "pixel_micro_iou": 0.7409655969933506,
+      "pixel_micro_dice": 0.8512122218532049,
+      "image_f1": 1.0
+    },
+    "MT_Fray": {
+      "count": 5,
+      "positive_masks": 5,
+      "pixel_micro_iou": 0.9389391346858958,
+      "pixel_micro_dice": 0.9685081062000453,
+      "image_f1": 0.7499999999999999
+    },
+    "MT_Free": {
+      "count": 143,
+      "positive_masks": 0,
+      "pixel_micro_iou": 0.0,
+      "pixel_micro_dice": 0.0,
+      "image_f1": 0.0
+    },
+    "MT_Uneven": {
+      "count": 15,
+      "positive_masks": 14,
+      "pixel_micro_iou": 0.7080043785501758,
+      "pixel_micro_dice": 0.8290428144583083,
+      "image_f1": 0.9655172413793104
+    }
+  }
+}

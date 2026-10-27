@@ -1,0 +1,21 @@
+{
+  "epochs": 40,
+  "size": 384,
+  "batch_size": 8,
+  "architecture": "resnet18_unet",
+  "base_channels": 16,
+  "learning_rate": 0.001,
+  "patience": 12,
+  "seed": 43,
+  "split_seed": 42,
+  "no_pretrained": false,
+  "device": "cuda",
+  "python": "3.12.12",
+  "torch": "2.11.0+cu128",
+  "opencv": "5.0.0",
+  "hardware": "NVIDIA GeForce RTX 5060 Laptop GPU",
+  "augmentation": "paired H/V flips, brightness/contrast, Gaussian noise",
+  "loss": "unweighted BCE + per-image soft Dice; reductions in FP32",
+  "sampling": "balanced image-level positive/negative",
+  "test_access": "compressed file bytes hashed only for provenance; heldout pixels never decoded, optimized or scored by train"
+}

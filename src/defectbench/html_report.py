@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from html import escape
+import json
 from pathlib import Path
 from urllib.parse import quote
 
@@ -25,16 +26,18 @@ def write_report(path: Path, report: dict, title: str = "磁瓦缺陷分割评�
     )
     curve = detection.get("precision_recall_curve", [])
     points = " ".join(f'{45 + point["recall"] * 500:.1f},{235 - point["precision"] * 200:.1f}' for point in curve)
+    interval = report.get("dice_bootstrap_95_ci")
+    interval_text = f'{interval["low"]:.3f} - {interval["high"]:.3f}（按图片重采样的 95% 区间）' if interval else "未计算"
     text = f'''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{escape(title)}</title><style>body{{font:17px/1.7 system-ui,'Microsoft YaHei';max-width:980px;margin:35px auto;padding:0 24px;color:#203047;background:#f5f8fc}}section{{background:white;padding:22px;border-radius:14px;margin:18px 0}}table{{border-collapse:collapse;width:100%}}td,th{{border-bottom:1px solid #d9e3ec;text-align:left;padding:9px}}.score{{font-size:30px;color:#176c86}}svg{{width:100%;max-width:600px}}code{{overflow-wrap:anywhere}}</style>
 <h1>{escape(title)}</h1><p>同一数据集固定留出测试；参数由验证集选择。此报告未包含数据集图像。</p>
 <section><h2>像素分割</h2><div class="score">Dice {report.get("pixel_micro_dice", 0):.3f} · IoU {report.get("pixel_micro_iou", 0):.3f}</div>
 <p>测试图片 {report.get("count", 0)} 张；像素 TP/FP/FN = {report.get("pixel_tp", 0)} / {report.get("pixel_fp", 0)} / {report.get("pixel_fn", 0)}。</p>
-<p>Dice 衡量缺陷区域重叠，不是图片识别准确率。置信区间：{escape(str(report.get("dice_bootstrap_95_ci", "未计算")))}</p></section>
+<p>Dice 衡量缺陷区域重叠，不是图片识别准确率。置信区间：{interval_text}</p></section>
 <section><h2>整图有无缺陷</h2><p>TP={confusion.get("tp", "—")}，FP={confusion.get("fp", "—")}，FN={confusion.get("fn", "—")}，TN={confusion.get("tn", "—")}。</p>
 <p>F1={report.get("image_f1", 0):.3f} · AUROC={report.get("image_auroc", 0) or 0:.3f} · AP={detection.get("average_precision", 0) or 0:.3f} · 正常样本误报率={detection.get("false_positive_rate", 0) or 0:.1%}</p>
 <svg viewBox="0 0 600 280" role="img" aria-label="图像检测PR曲线"><path d="M45 30V235H555" fill="none" stroke="#789"/><polyline points="{points}" fill="none" stroke="#008e85" stroke-width="3"/><text x="250" y="270">召回率 Recall →</text><text x="45" y="20">精确率 Precision ↑</text></svg></section>
 <section><h2>逐类结果</h2><table><tr><th>类别</th><th>张数</th><th>Dice</th><th>IoU</th></tr>{category_rows}</table></section>
-<section><h2>复查与边界</h2><p>优先检查漏检和误报。小缺陷、类别不平衡、采集环境变化都会影响表现；本结果不等同于生产线验证。</p><p>模型与评估信息：<code>{escape(str(report.get("experiment", {})))}</code></p></section></html>'''
+<section><h2>复查与边界</h2><p>优先检查漏检和误报。小缺陷、类别不平衡、采集环境变化都会影响表现；本结果不等同于生产线验证。</p><details><summary>模型与复现信息</summary><pre>{escape(json.dumps(report.get("experiment", {}), ensure_ascii=False, indent=2))}</pre></details></section></html>'''
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")

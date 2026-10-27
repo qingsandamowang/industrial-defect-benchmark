@@ -1,0 +1,38 @@
+{
+  "frozen_at_utc": "2026-10-27T13:51:23.731679+00:00",
+  "rule": "highest native-resolution validation pixel micro Dice; lower seed breaks exact ties",
+  "protocol_sha256": "03a816ff2e2e68e0c10ed735d836952b4ede192a5f25c4ebcb594c1ae4ce5c1c",
+  "candidates": [
+    {
+      "run": "transfer_seed42",
+      "seed": 42,
+      "best_epoch": 24,
+      "validation_dice": 0.8473584490999586,
+      "checkpoint_sha256": "df34da9ed775eaedeaa120657f8eccff89a75644599b4ecdb92ab6c17546d0be",
+      "epochs_run": 36,
+      "selection": "maximum validation pixel micro Dice, thresholds selected only on validation",
+      "test_evaluated": false
+    },
+    {
+      "run": "transfer_seed43",
+      "seed": 43,
+      "best_epoch": 32,
+      "validation_dice": 0.8472062351514024,
+      "checkpoint_sha256": "b0952c62b6f5fc30609855becbb22c986f9ff9074f5665ed66a555b24b3867aa",
+      "epochs_run": 40,
+      "selection": "maximum validation pixel micro Dice, thresholds selected only on validation",
+      "test_evaluated": false
+    }
+  ],
+  "selected": {
+    "run": "transfer_seed42",
+    "seed": 42,
+    "best_epoch": 24,
+    "validation_dice": 0.8473584490999586,
+    "checkpoint_sha256": "df34da9ed775eaedeaa120657f8eccff89a75644599b4ecdb92ab6c17546d0be",
+    "epochs_run": 36,
+    "selection": "maximum validation pixel micro Dice, thresholds selected only on validation",
+    "test_evaluated": false
+  },
+  "test_scores_accessed_for_selection": false
+}

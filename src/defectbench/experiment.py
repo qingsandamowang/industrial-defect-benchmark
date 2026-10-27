@@ -189,6 +189,7 @@ def evaluate(args):
     report["experiment"] = {key: value for key, value in metadata.items() if key != "splits"}
     report["checkpoint_sha256"] = hashlib.sha256(args.checkpoint.read_bytes()).hexdigest()
     report["median_inference_ms"] = float(np.median(latencies))
+    report["evaluation_runtime"] = {"device": args.device, "hardware": torch.cuda.get_device_name(0) if args.device == "cuda" else platform.processor(), "torch": str(torch.__version__), "precision": "FP32", "timing_scope": "batch=1 model forward plus device-to-host probability copy; excludes file decoding and resize"}
     write_json(args.out / "test_report.json", report)
     write_json(args.out / "per_image.json", rows)
     write_json(args.out / "manifest.json", {"splits": actual_splits, "split_seed": metadata["split_seed"], "dataset_sha256": fingerprint["dataset_sha256"], "test_selection": "fixed heldout split; checkpoint and thresholds frozen before this command"})
